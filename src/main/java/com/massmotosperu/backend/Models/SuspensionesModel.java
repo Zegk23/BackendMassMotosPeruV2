@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
@@ -13,7 +14,9 @@ import lombok.NoArgsConstructor;
 public class SuspensionesModel {
 
     @Id
-    @Column(name = "SuspensionesID", length = 36)
+    @GeneratedValue(generator = "UUID")  // Generador de UUID automático
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "SuspensionesID", updatable = false, nullable = false, length = 36)
     private String suspensionesID;
 
     @Column(name = "SuspensionDelantera")

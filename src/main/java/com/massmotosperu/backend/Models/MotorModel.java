@@ -1,10 +1,10 @@
 package com.massmotosperu.backend.Models;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 public class MotorModel {
 
     @Id
-    @Column(name = "MotorID", length = 36)
+    @GeneratedValue(generator = "UUID")  // Generación automática de UUID
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "MotorID", length = 36, updatable = false, nullable = false)
     private String motorID;
 
     @Column(name = "TipoMotor")

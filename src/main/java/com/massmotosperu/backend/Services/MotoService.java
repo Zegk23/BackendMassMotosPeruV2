@@ -15,22 +15,18 @@ public class MotoService {
     @Autowired
     private MotoRepository motoRepository;
 
-    // Método para obtener todas las motos
     public List<MotoModel> obtenerMotos() {
         return motoRepository.findAll();
     }
 
-    // Método para obtener una moto por su nombre
     public Optional<MotoModel> obtenerMotoPorNombre(String nombre) {
         return motoRepository.findByNombreMoto(nombre);
     }
 
-    // Método para obtener una moto por su ID
     public Optional<MotoModel> obtenerMotoPorId(String id) {
         return motoRepository.findById(id);
     }
 
-    // Método para agregar una nueva moto
     public MotoModel agregarMoto(MotoDTO motoDTO) {
         MotoModel moto = new MotoModel();
         moto.setNombreMoto(motoDTO.getNombreMoto());
@@ -53,7 +49,6 @@ public class MotoService {
         return motoRepository.save(moto);
     }
 
-    // Método para editar una moto existente
     public Optional<MotoModel> editarMoto(String id, MotoDTO motoDTO) {
         return motoRepository.findById(id).map(moto -> {
             moto.setNombreMoto(motoDTO.getNombreMoto());
@@ -77,7 +72,6 @@ public class MotoService {
         });
     }
 
-    // Método para eliminar una moto por su ID
     public boolean eliminarMoto(String id) {
         return motoRepository.findById(id).map(moto -> {
             motoRepository.delete(moto);

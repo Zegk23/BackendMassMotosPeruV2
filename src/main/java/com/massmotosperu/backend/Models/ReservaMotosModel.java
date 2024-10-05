@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 
@@ -15,7 +16,9 @@ import java.util.Date;
 public class ReservaMotosModel {
 
     @Id
-    @Column(name = "ReservaID", length = 36)
+    @GeneratedValue(generator = "UUID")  // Generación automática de UUID
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "ReservaID", length = 36, updatable = false, nullable = false)
     private String reservaID;
 
     @Column(name = "Fecha")

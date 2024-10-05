@@ -1,9 +1,11 @@
 package com.massmotosperu.backend.Models;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Data
 @Entity
@@ -13,7 +15,9 @@ import lombok.NoArgsConstructor;
 public class ColoresModel {
 
     @Id
-    @Column(name = "ColoresID", length = 36)
+    @GeneratedValue(generator = "UUID")  // Configuración para generar el UUID automáticamente
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "ColoresID", length = 36, updatable = false, nullable = false)
     private String coloresID;
 
     @Column(name = "NombreColor")
