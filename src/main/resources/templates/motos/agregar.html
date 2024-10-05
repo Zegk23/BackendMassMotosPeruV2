@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Moto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Agregar Nueva Moto</h1>
+    <form th:action="@{/motos/agregar}" th:object="${moto}" method="post">
+        <div class="form-group">
+            <label for="nombreMoto">Nombre:</label>
+            <input type="text" id="nombreMoto" th:field="*{nombreMoto}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="marcaMoto">Marca:</label>
+            <input type="text" id="marcaMoto" th:field="*{marcaMoto}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="modeloMoto">Modelo:</label>
+            <input type="text" id="modeloMoto" th:field="*{modeloMoto}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="anioFabricacion">Año de Fabricación:</label>
+            <input type="number" id="anioFabricacion" th:field="*{anioFabricacion}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="velocidadMaxima">Velocidad Máxima (km/h):</label>
+            <input type="number" id="velocidadMaxima" th:field="*{velocidadMaxima}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="precioSoles">Precio (S/):</label>
+            <input type="number" step="0.01" id="precioSoles" th:field="*{precioSoles}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="descripcionMoto">Descripción:</label>
+            <textarea id="descripcionMoto" th:field="*{descripcionMoto}" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="/motos/listar" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

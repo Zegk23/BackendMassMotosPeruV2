@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Motos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Listado de Motos</h1>
+    <a class="btn btn-primary mb-3" href="/motos/agregar">Agregar Nueva Moto</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Velocidad Máxima</th>
+            <th>Precio (S/.)</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="moto : ${motos}">
+            <td th:text="${moto.nombreMoto}"></td>
+            <td th:text="${moto.marcaMoto}"></td>
+            <td th:text="${moto.modeloMoto}"></td>
+            <td th:text="${moto.anioFabricacion}"></td>
+            <td th:text="${moto.velocidadMaxima}"></td>
+            <td th:text="${moto.precioSoles}"></td>
+            <td>
+                <a class="btn btn-warning" th:href="@{'/motos/editar/' + ${moto.idMoto}}">Editar</a>
+                <a class="btn btn-danger" th:href="@{'/motos/eliminar/' + ${moto.idMoto}}" onclick="return confirm('¿Estás seguro de eliminar esta moto?');">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
