@@ -44,10 +44,12 @@ public class MotoServiceView {
             m.setGarantiaAnios(moto.getGarantiaAnios());
             m.setGarantiaKM(moto.getGarantiaKM());
             m.setDescripcionMoto(moto.getDescripcionMoto());
-
+            m.setUrlImg(moto.getUrlImg());
+    
             return motoRepository.save(m);
         });
     }
+    
 
     public boolean eliminarMoto(String id) {
         return motoRepository.findById(id).map(moto -> {

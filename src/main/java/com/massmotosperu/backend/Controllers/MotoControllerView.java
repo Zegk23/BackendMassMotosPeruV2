@@ -38,7 +38,6 @@ public class MotoControllerView {
         return "redirect:/motos/listar";
     }
 
-    // Mostrar formulario para editar una moto existente
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditarMoto(@PathVariable String id, Model model) {
         MotoModel moto = motoServiceView.obtenerMotoPorId(id).orElse(null);
@@ -46,7 +45,6 @@ public class MotoControllerView {
         return "motos/editar";
     }
 
-    // Procesar el formulario para editar una moto
     @PostMapping("/editar")
     public String editarMoto(@ModelAttribute MotoModel moto) {
         motoServiceView.editarMoto(moto.getIdMoto(), moto);

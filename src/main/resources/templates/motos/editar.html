@@ -9,10 +9,17 @@
 <div class="container mt-5">
     <h1>Editar Moto</h1>
     <form th:action="@{/motos/editar}" th:object="${moto}" method="post">
+        <!-- Campo oculto para el ID de la moto (puedes dejarlo si quieres mantener la referencia del ID) -->
         <input type="hidden" th:field="*{idMoto}"/>
+        
+        <!-- Campos que queremos editar (excluyendo los ID) -->
         <div class="form-group">
             <label for="nombreMoto">Nombre:</label>
             <input type="text" id="nombreMoto" th:field="*{nombreMoto}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="estadoMoto">Estado:</label>
+            <input type="text" id="estadoMoto" th:field="*{estadoMoto}" class="form-control" required/>
         </div>
         <div class="form-group">
             <label for="marcaMoto">Marca:</label>
@@ -35,9 +42,39 @@
             <input type="number" step="0.01" id="precioSoles" th:field="*{precioSoles}" class="form-control" required/>
         </div>
         <div class="form-group">
+            <label for="precioDolares">Precio ($):</label>
+            <input type="number" step="0.01" id="precioDolares" th:field="*{precioDolares}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="kilometraje">Kilometraje:</label>
+            <input type="number" id="kilometraje" th:field="*{kilometraje}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso:</label>
+            <input type="number" id="peso" th:field="*{peso}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="numAsientos">Número de Asientos:</label>
+            <input type="number" id="numAsientos" th:field="*{numAsientos}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="cargaUtil">Carga Útil:</label>
+            <input type="number" id="cargaUtil" th:field="*{cargaUtil}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="garantiaAnios">Garantía (Años):</label>
+            <input type="number" id="garantiaAnios" th:field="*{garantiaAnios}" class="form-control" required/>
+        </div>
+        <div class="form-group">
+            <label for="garantiaKM">Garantía (KM):</label>
+            <input type="number" id="garantiaKM" th:field="*{garantiaKM}" class="form-control" required/>
+        </div>
+        <div class="form-group">
             <label for="descripcionMoto">Descripción:</label>
             <textarea id="descripcionMoto" th:field="*{descripcionMoto}" class="form-control" required></textarea>
         </div>
+        <!-- Omitiendo campos de IDs de componentes como motorID, suspensionesID, etc. -->
+        
         <button type="submit" class="btn btn-success">Guardar Cambios</button>
         <a href="/motos/listar" class="btn btn-secondary">Cancelar</a>
     </form>
